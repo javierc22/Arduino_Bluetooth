@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         IdDesconectar = findViewById(R.id.IdDesconectar);
         IdBufferIn = findViewById(R.id.IdBufferIn);
 
+        // Lógica para leer información enviada por Arduino
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Crea conexión segura
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException
     {
         //crea un conexion de salida segura para el dispositivo
@@ -179,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
             mmOutStream = tmpOut;
         }
 
+        // recepción de datos
         public void run()
         {
             byte[] buffer = new byte[256];
@@ -196,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        //Envio de trama
+        //Envio de datos
         public void write(String input)
         {
             try {
